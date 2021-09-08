@@ -2,23 +2,36 @@
 
 ## users テーブル
 
-| Column              | Type                        | Options                |
-|---------------------|-----------------------------|------------------------|
-| name                | string                      | null: false            |
-| email               | string                      | null: false            |
-| encrypted_password  | string                      | null: false            |
+| Column              | Type                        | Options                  |
+|---------------------|-----------------------------|--------------------------|
+| nickname            | string                      | null: false              |
+| email               | string                      | null: false, unique: true|
+| encrypted_password  | string                      | null: false              |
+| first_name          | string                      | null: false              |
+| last_name           | string                      | null: false              |
+| first_name_kana     | string                      | null: false              |
+| last_name_kana      | string                      | null: false              |
+| birth_date          | date                        | null: false              |
 
 # Association
 - has_many :items
+- has_many :purchase_records
 
 
 ## items テーブル
 
-| Column              | Type                        | Options                        |
-|---------------------|-----------------------------|--------------------------------|
-| product_name        | string                      | null: false                    |
-| price               | numeric                     | null: false                    |
-| user                | reference                   | null: false, foreign_key: true |
+| Column                | Type                        | Options                        |
+|-----------------------|-----------------------------|--------------------------------|
+| name                  | string                      | null: false                    |
+| image                 | ActiveStorage               | null: false                    |
+| price                 | integer                     | null: false                    |
+| user                  | reference                   | null: false, foreign_key: true |
+| info                  | text                        | null: false                    |
+| category_id           | integer                     | null: false                    |
+| sales_status_id       | integer                     | null: false                    |
+| shipping_fee_status_id| integer                     | null: false                    |
+| prefecture_id         | integer                     | null: false                    |
+| scheduled_delivery_id | integer                     | null: false                    |
 
 # Association
 - belongs_to :user
@@ -38,12 +51,17 @@
 - has_one :delivery_address
 
 
-## delivery_addresses テーブル
+## pay_forms テーブル
 
 | Column              | Type                        | Options                        |
 |---------------------|-----------------------------|--------------------------------|
 | purchase_record     | reference                   | null: false, foreign_key: true |
-| address             | string                      | null: false, foreign_key: true |
+| postal_code         | integer                     | null: false, foreign_key: true |
+| prefecture_id       | integer                     | null: false, foreign_key: true |
+| city                | string                      | null: false, foreign_key: true |
+| addresses           | string                      | null: false, foreign_key: true |
+| building            | string                      |                                |
+| phone_number        | integer                     | null: false, foreign_key: true |
 
 # Association
 - belongs_to :purchase_record
