@@ -23,7 +23,6 @@
 | Column                | Type                        | Options                        |
 |-----------------------|-----------------------------|--------------------------------|
 | name                  | string                      | null: false                    |
-| image                 | ActiveStorage               | null: false                    |
 | price                 | integer                     | null: false                    |
 | user                  | reference                   | null: false, foreign_key: true |
 | info                  | text                        | null: false                    |
@@ -56,12 +55,12 @@
 | Column              | Type                        | Options                        |
 |---------------------|-----------------------------|--------------------------------|
 | purchase_record     | reference                   | null: false, foreign_key: true |
-| postal_code         | integer                     | null: false, foreign_key: true |
-| prefecture_id       | integer                     | null: false, foreign_key: true |
-| city                | string                      | null: false, foreign_key: true |
-| addresses           | string                      | null: false, foreign_key: true |
+| postal_code         | integer                     | null: false,                   |
+| prefecture_id       | integer                     | null: false,                   |
+| city                | string                      | null: false,                   |
+| addresses           | string                      | null: false,                   |
 | building            | string                      |                                |
-| phone_number        | integer                     | null: false, foreign_key: true |
+| phone_number        | integer                     | null: false,                   |
 
 # Association
 - belongs_to :purchase_record
