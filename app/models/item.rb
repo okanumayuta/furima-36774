@@ -10,8 +10,8 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :scheduled_delivery
 
-  validates :name, :price, :info, presence: true
+  validates :name, :price, :info, :image, presence: true
   validates :price, format: { with: /\A[0-9]+\z/ }
-  validates :price, numericality: { in: 300..9999999 }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, numericality: { other_than: 0 , message: "can't be blank"} 
 end
