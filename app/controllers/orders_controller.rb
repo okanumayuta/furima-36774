@@ -7,9 +7,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = OrderForm.new(order_params)
-    if @order.save
+    if @order.valid?
+      @order.save
       redirect_to root_path
     else
+      @item = Item.find(params[:item_id])
       render :index
     end
   end
