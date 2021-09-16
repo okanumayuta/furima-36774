@@ -6,7 +6,7 @@ FactoryBot.define do
     addresses          { '栄１丁目' }
     building           { Faker::Name.initials(number: 2) }
     phone_number       { '09012345678' }
-    token              {"tok_abcdefghijk00000000000000000"}
+    token              { 'tok_abcdefghijk00000000000000000' }
 
     association :user
     association :item
