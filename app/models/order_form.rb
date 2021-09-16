@@ -1,7 +1,7 @@
 class OrderForm
   include ActiveModel::Model
 
-  attr_accessor :user_id, :item_id, :order_id, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :token
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :token
 
   validates :postal_code, :prefecture_id, :city, :addresses, :phone_number, :user_id, :item_id, :token, presence: true
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
