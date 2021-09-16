@@ -34,7 +34,7 @@
 
 # Association
 - belongs_to :user
-- has_one :orders
+- has_one :order
 
 
 ## orders テーブル
@@ -54,13 +54,13 @@
 
 | Column              | Type                        | Options                        |
 |---------------------|-----------------------------|--------------------------------|
-| purchase_record     | reference                   | null: false, foreign_key: true |
+| order               | reference                   | null: false, foreign_key: true |
 | postal_code         | integer                     | null: false,                   |
 | prefecture_id       | integer                     | null: false,                   |
 | city                | string                      | null: false,                   |
 | addresses           | string                      | null: false,                   |
 | building            | string                      |                                |
-| phone_number        | integer                     | null: false,                   |
+| phone_number        | string                     | null: false,                   |
 
 # Association
 - belongs_to :orders
