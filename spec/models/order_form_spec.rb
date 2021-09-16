@@ -39,12 +39,6 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include 'Postal code is invalid'
       end
 
-      it '郵便番号が半角数字以外が含まれている場合は保存できない' do
-        @order_form.postal_code = '１2-34567'
-        @order_form.valid?
-        expect(@order_form.errors.full_messages).to include 'Postal code is invalid'
-      end
-
       it '郵便番号が半角半角ハイフンを含む形でなければ保存できない' do
         @order_form.postal_code = '1234567'
         @order_form.valid?
@@ -83,6 +77,12 @@ RSpec.describe OrderForm, type: :model do
 
       it '電話番号が12桁以上では保存できない' do
         @order_form.phone_number = '123456789123'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include 'Phone number is invalid'
+      end
+
+      it '電話番号が半角数字以外が含まれている場合には保存できない' do
+        @order_form.phone_number = '１23456789123'
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include 'Phone number is invalid'
       end
